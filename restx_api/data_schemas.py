@@ -242,6 +242,30 @@ class OptionSymbolRequest(Schema):
     underlying_exchange = fields.Str(required=False)  # Optional: Specify underlying exchange
 
 
+class ScreenerSchema(Schema):
+    apikey = fields.Str(required=True, validate=validate.Length(min=1, max=256))
+    symbol = fields.Str(required=True)
+    exchange = fields.Str(required=True, validate=validate.OneOf(VALID_EXCHANGES))
+    interval = fields.Str(
+        required=True,
+        validate=validate.OneOf(["1m", "5m", "15m", "30m", "1h", "2h", "3h", "4h", "D", "W", "M"]),
+    )
+    start_date = fields.Date(required=True, format="%Y-%m-%d")
+    end_date = fields.Date(required=True, format="%Y-%m-%d")
+    source = fields.Str(
+        required=False, load_default="api", validate=validate.OneOf(["api", "db"])
+    )
+
+
+class ScreenerSymbolsSchema(Schema):
+    apikey = fields.Str(required=True, validate=validate.Length(min=1, max=256))
+    query = fields.Str(required=True, validate=validate.Length(min=1, max=50))
+    exchange = fields.Str(required=False, validate=validate.OneOf(VALID_EXCHANGES))
+    source = fields.Str(
+        required=False, load_default="api", validate=validate.OneOf(["api", "db"])
+    )
+
+
 class MultiOptionGreeksSchema(Schema):
     """Schema for batch option greeks requests"""
 

@@ -152,6 +152,8 @@ dependencies = [
   "WTForms==3.2.1",
   "zipp==3.23.0",
   "zmq==0.0.0",
+  "psycopg2-binary>=2.9.11",
+  "ta-lib>=0.6.8",
 ]
 
 [build-system]

@@ -86,3 +86,7 @@ yarn-error.log*
 
 # Windows NUL file
 nul
+ta-lib-0.6.4/*
+ta-lib-0.4.0-src.tar.gz
+ta-lib-0.6.4-src.tar.gz
+openalgo_custom.code-workspace
